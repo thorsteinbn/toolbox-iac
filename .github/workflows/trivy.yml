@@ -13,7 +13,7 @@ on:
   workflow_dispatch: # allow manually triggering builds
 
 env:
-  IMAGE_NAME: tbn-fedora-toolbox-python
+  IMAGE_NAME: toolbox-iac-alpine
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
 
 jobs:
