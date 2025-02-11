@@ -20,9 +20,10 @@ on:
 
 
 jobs:
-
   build-image:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
 
     steps:
       - name: Checkout
@@ -37,3 +38,14 @@ jobs:
           containerfiles: alpine/Containerfile
           layers: false
           oci: true
+
+      - name: Push to Container Registry
+        uses: redhat-actions/push-to-registry@v2
+        id: push
+        if: (github.event_name == 'push' || github.event_name == 'schedule') && github.ref == 'refs/heads/main'
+        with:
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+          image: toolbox-iac-alpine
+          registry: ghcr.io/${{ github.repository_owner }}
+          tags: latest
