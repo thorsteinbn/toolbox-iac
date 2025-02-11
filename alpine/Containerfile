@@ -3,9 +3,9 @@ FROM quay.io/toolbx-images/alpine-toolbox:3.21
 ARG TENV_VERSION=v4.2.4
 
 RUN wget -q https://github.com/tofuutils/tenv/releases/download/$TENV_VERSION/tenv_${TENV_VERSION}_amd64.apk && \
-    apk update && \
-    apk upgrade && \
-    apk add ansible ansible-lint && \
+    apk add --no-cache \
+    ansible \
+    ansible-lint && \
     apk add --allow-untrusted tenv_${TENV_VERSION}_amd64.apk && \
     tenv tofu install latest && \
     tenv terraform install latest
