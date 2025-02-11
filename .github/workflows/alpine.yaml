@@ -34,6 +34,6 @@ jobs:
           context: alpine
           image: toolbox-iac-alpine
           tags: latest
-          containerfiles: apline/Containerfile
+          containerfiles: alpine/Containerfile
           layers: false
           oci: true
