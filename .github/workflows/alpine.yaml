@@ -39,6 +39,18 @@ jobs:
           layers: false
           oci: true
 
+      - name: Activate podman socket
+        run: systemctl --user enable --now podman.socket
+
+      - name: Trivy scan image
+        uses: aquasecurity/trivy-action@18f2510ee396bbf400402947b394f2dd8c87dbb0 # v0.29.0
+        with:
+          image-ref: localhost/toolbox-iac-alpine
+          timeout: 30m0s
+          docker-host: /usr/lib/systemd/user/podman.socket
+        env:
+          TRIVY_DB_REPOSITORY: ghcr.io/aquasecurity/trivy-db,public.ecr.aws/aquasecurity/trivy-db
+
       - name: Push to Container Registry
         uses: redhat-actions/push-to-registry@v2
         id: push
