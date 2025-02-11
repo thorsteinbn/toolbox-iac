@@ -1,0 +1,39 @@
+name: "Alpine Linux: Build and push toolbx images"
+
+permissions: read-all
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - alpine/**
+      - .github/workflows/alpine.yaml
+  push:
+    branches:
+      - main
+    paths:
+      - alpine/**
+      - .github/workflows/alpine.yaml
+  schedule:
+    - cron:  '0 0 * * MON'
+
+
+jobs:
+
+  build-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build container image
+        uses: redhat-actions/buildah-build@v2
+        with:
+          context: alpine
+          image: toolbox-iac-alpine
+          tags: latest
+          containerfiles: apline/Containerfile
+          layers: false
+          oci: true

@@ -1,0 +1,4 @@
+FROM quay.io/toolbx-images/alpine-toolbox:3.21
+
+RUN apk update && \
+    apk upgrade
