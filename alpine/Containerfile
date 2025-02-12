@@ -1,5 +1,6 @@
 FROM quay.io/toolbx-images/alpine-toolbox:3.21
 
+# renovate: datasource=github-releases depName=tofuutils/tenv
 ARG TENV_VERSION=v4.2.4
 
 RUN wget -q https://github.com/tofuutils/tenv/releases/download/$TENV_VERSION/tenv_${TENV_VERSION}_amd64.apk && \
