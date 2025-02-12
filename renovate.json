@@ -7,7 +7,7 @@
     {
       "customType": "regex",
       "fileMatch": [
-        "(^|\w+/)Containerfile$"
+        ".*Containerfile$"
       ],
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-z-]+?)(?: depName=(?<depName>.+?))? packageName=(?<packageName>.+?)(?: versioning=(?<versioning>[a-z-]+?))?\\s(?:ENV|ARG) .+?_VERSION=(?<currentValue>.+?)\\s"
