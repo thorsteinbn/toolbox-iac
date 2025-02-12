@@ -7,6 +7,6 @@ RUN wget -q https://github.com/tofuutils/tenv/releases/download/$TENV_VERSION/te
     ansible \
     ansible-lint \
     python3 && \
-    apk add --allow-untrusted tenv_${TENV_VERSION}_amd64.apk && \
+    apk add --no-cache --allow-untrusted tenv_${TENV_VERSION}_amd64.apk && \
     tenv tofu install latest && \
     tenv terraform install latest
