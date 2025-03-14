@@ -46,7 +46,7 @@ jobs:
 
       - name: Trivy scan image
         if: (github.event_name == 'push' || github.event_name == 'schedule') && github.ref != 'refs/heads/main'
-        uses: aquasecurity/trivy-action@18f2510ee396bbf400402947b394f2dd8c87dbb0 # v0.29.0
+        uses: aquasecurity/trivy-action@6c175e9c4083a92bbca2f9724c8a5e33bc2d97a5 # 0.30.0
         with:
           image-ref: localhost/toolbox-iac-alpine
           timeout: 30m0s
