@@ -1,4 +1,4 @@
-FROM quay.io/toolbx-images/alpine-toolbox:3.21
+FROM quay.io/toolbx-images/alpine-toolbox:3.22
 
 # renovate: datasource=github-tags depName=tofuutils/tenv
 ARG TENV_VERSION=v4.2.4
